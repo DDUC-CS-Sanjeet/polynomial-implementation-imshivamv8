@@ -25,11 +25,12 @@ class Polynomial
     {
       // Copy Constructor
       no_of_terms = P.no_of_terms;
+      coefficients = new int[no_of_terms];
       for(int i = P.no_of_terms-1; i >= 0; i--)
         coefficients[i] = P.coefficients[i];
     }
 
-    Polynomial operator + (Polynomial P)
+    Polynomial operator + (Polynomial& P)
     {
       // + Operator Overloading
       int i, j, k = 0;
@@ -45,7 +46,7 @@ class Polynomial
           result.coefficients[k++] = P.coefficients[j++];
       return result;
     }
-    Polynomial operator - (Polynomial P)
+    Polynomial operator - (Polynomial& P)
     {
       // - Operator Overloading
       int i, j, k = 0;
@@ -61,13 +62,14 @@ class Polynomial
           result.coefficients[k++] = -P.coefficients[j++];
       return result;
     }
-    void operator = (const Polynomial &P)
+    Polynomial& operator = (const Polynomial &P)
     {
       // = Operator Overloading
       no_of_terms = P.no_of_terms;
       coefficients = new int[no_of_terms];
       for(int i = P.no_of_terms-1; i >= 0; i--)
         coefficients[i] = P.coefficients[i];
+      return *this;
     }
 
     ~Polynomial()
